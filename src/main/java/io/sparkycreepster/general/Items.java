@@ -12,7 +12,8 @@ public class Items {
     // Register items here
     public static final Item BLOOD_VIAL = registerItem("blood_vial",
             new Item(new FabricItemSettings()));
-
+    public static final Item STAINED_SWORD = registerItem("stained_sword",
+            new Item(new FabricItemSettings()));
 
     private static net.minecraft.item.Item registerItem(String name, net.minecraft.item.Item item) {
         return Registry.register(Registries.ITEM, new Identifier(MOD_ID, name), item);
