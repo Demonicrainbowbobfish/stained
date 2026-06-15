@@ -3,7 +3,8 @@
 	"package": "io.sparkycreepster.client.mixin",
 	"compatibilityLevel": "JAVA_17",
 	"client": [
-
+		"PlayerListModifier",
+		"JoinMessageBlocker"
 	],
 	"injectors": {
 		"defaultRequire": 1
