@@ -1,5 +1,6 @@
 package io.sparkycreepster.custom;
 
+import io.sparkycreepster.custom.dataclasses.BloodmarkData;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
@@ -8,17 +9,13 @@ import net.minecraft.item.ToolMaterial;
 import net.minecraft.text.Text;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
-import net.minecraft.util.TypedActionResult;
-import net.minecraft.world.World;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.UUID;
-import java.util.ArrayList;
+import java.util.*;
 
 public class StainedSwordMaterialorsmt extends SwordItem {
+    private static final Map<UUID, BloodmarkData> BLOODMARKS = new HashMap<>();
     private static final Map<UUID, List<Long>> HITS = new HashMap<>();
+
     public StainedSwordMaterialorsmt(ToolMaterial material, int attackDamage, float attackSpeed, Settings settings) {
         super(material, attackDamage, attackSpeed, settings);
     }
@@ -30,15 +27,25 @@ public class StainedSwordMaterialorsmt extends SwordItem {
             LivingEntity entity,
             Hand hand
     ) {
-        if (!user.getWorld().isClient()) {
-            user.sendMessage(
-                    Text.literal("Marked " + entity.getName().getString()),
-                    false
-            );
+
+        long currentTime = user.getWorld().getTime();
+        UUID id = entity.getUuid();
+        BLOODMARKS.containsKey(id);
+        if (BLOODMARKS.containsKey(id)) {
+            return ActionResult.SUCCESS;
         }
-
+        generateRandomBetween10 random = new generateRandomBetween10();
+        int requiredHits = random.getRangedInt(10, 20);
+        BloodmarkData mark = new BloodmarkData(
+                requiredHits,
+                currentTime
+        );
+        BLOODMARKS.put(id, mark);
+        user.sendMessage(
+                Text.literal("Bloodmarked: " + requiredHits + " hits required"),
+                false
+        );
         return ActionResult.SUCCESS;
-
     }
     // Bloodmark detection thingy
     @Override
