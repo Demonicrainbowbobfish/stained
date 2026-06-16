@@ -30,7 +30,7 @@ public class StainedSwordMaterialorsmt extends SwordItem {
 
         long currentTime = user.getWorld().getTime();
         UUID id = entity.getUuid();
-        BLOODMARKS.containsKey(id);
+        // BLOODMARKS.containsKey(id);
         if (BLOODMARKS.containsKey(id)) {
             return ActionResult.SUCCESS;
         }
