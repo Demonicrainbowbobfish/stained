@@ -4,7 +4,9 @@
 	"compatibilityLevel": "JAVA_17",
 	"client": [
 		"PlayerListModifier",
-		"JoinMessageBlocker"
+		"JoinMessageBlocker",
+		"PlayerCancelMixin",
+		"CancelShadowRender"
 	],
 	"injectors": {
 		"defaultRequire": 1

@@ -61,11 +61,8 @@ public abstract class JoinMessageBlocker {
                                 ci.cancel();
                             }
                         }
-
-
                     }
                 }
-
             }
         }
     }

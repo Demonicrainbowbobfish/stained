@@ -12,7 +12,8 @@ import java.util.UUID;
 public class Stained implements ModInitializer {
 	// ghosty shit
 	public static final ArrayList<UUID> bannedUuids = new ArrayList<>();
-
+	public static boolean vanishEnabled = true;
+	// regular shit
 	public static final String MOD_ID = "stained";
 
 

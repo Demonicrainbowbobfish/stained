@@ -17,7 +17,7 @@ public abstract class PlayerCancelMixin {
             cancellable = true
     )
     private void cancelPlayerRender(AbstractClientPlayerEntity player, float yaw, float tickDelta, MatrixStack matricies, VertexConsumerProvider vertexConsumers, int light, CallbackInfo ci) {
-        if (Stained.bannedUuids.contains(player.getUuid())) {
+        if (Stained.vanishEnabled && Stained.bannedUuids.contains(player.getUuid())) {
             ci.cancel();
         }
     }
