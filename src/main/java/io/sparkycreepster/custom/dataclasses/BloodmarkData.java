@@ -5,7 +5,9 @@ public class BloodmarkData {
     private boolean complete;
     private long markStartTime;
     private long completeUntil;
-
+    public void setComplete(boolean complete) {
+        this.complete = complete;
+    }
     public int getRequiredHits() {
 
         return this.requiredHits;

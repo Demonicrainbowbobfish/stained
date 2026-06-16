@@ -50,14 +50,25 @@ public class StainedSwordMaterialorsmt extends SwordItem {
     // Bloodmark detection thingy
     @Override
     public boolean postHit(ItemStack stack, LivingEntity target, LivingEntity attacker) {
+
         // Now I need to figure this shit out bruh
         long currentTime = attacker.getWorld().getTime();
         // UUID storing
         UUID id = target.getUuid();
+        if (!BLOODMARKS.containsKey(id)) {
+            return super.postHit(stack, target, attacker);
+        }
+        BloodmarkData mark = BLOODMARKS.get(id);
+
+
         List<Long> hits = HITS.computeIfAbsent(id, k -> new ArrayList<>());
         hits.removeIf(time -> currentTime - time > 1200);
         hits.add(currentTime);
         int hitCount = hits.size();
+        if (hitCount >= mark.getRequiredHits()) {
+            // this runs when blood thing is fufilled
+
+        }
         if (!attacker.getWorld().isClient() && attacker instanceof PlayerEntity player) {
             player.sendMessage(
                     Text.literal("Hit count (last 60s): " + hitCount),
