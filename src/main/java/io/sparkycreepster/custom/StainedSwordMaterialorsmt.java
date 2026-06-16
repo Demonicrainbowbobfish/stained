@@ -67,7 +67,12 @@ public class StainedSwordMaterialorsmt extends SwordItem {
         int hitCount = hits.size();
         if (hitCount >= mark.getRequiredHits()) {
             // this runs when blood thing is fufilled
-
+            if (!attacker.getWorld().isClient() && attacker instanceof PlayerEntity player) {
+                player.sendMessage(
+                        Text.literal("Shit should work now"),
+                        false
+                );
+            }
         }
         if (!attacker.getWorld().isClient() && attacker instanceof PlayerEntity player) {
             player.sendMessage(

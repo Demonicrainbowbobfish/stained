@@ -15,10 +15,12 @@ public class Items {
     // Register items here
     public static final Item BLOOD_VIAL = registerItem("blood_vial",
             new Item(new FabricItemSettings()));
+    public static final Item SOUL_TRANSPORT = registerItem("soul_transport",
+            new Item(new FabricItemSettings()));
     public static final Item STAINED_SWORD = registerItem("stained_sword",
             new StainedSwordMaterialorsmt(
                     ToolMaterials.NETHERITE,
-                    10,
+                    4,
                     -2.4F,
                     new FabricItemSettings()
             ));
