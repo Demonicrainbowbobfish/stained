@@ -18,6 +18,7 @@ public abstract class PlayerListModifier {
     private void filterBannedPlayers(CallbackInfoReturnable<List<PlayerListEntry>> cir) {
         List<PlayerListEntry> originalList = cir.getReturnValue();
         if (originalList == null) {
+
             return;
         }
         List<PlayerListEntry> filteredList = originalList.stream()
