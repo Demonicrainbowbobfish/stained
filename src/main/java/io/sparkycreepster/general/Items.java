@@ -1,9 +1,9 @@
 package io.sparkycreepster.general;
 
-import io.sparkycreepster.custom.StainedSwordMaterialorsmt;
+import io.sparkycreepster.custom.weaponry.StainedSwordMaterialorsmt;
+import io.sparkycreepster.custom.weaponry.TwistedDagger;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.minecraft.item.Item;
-import net.minecraft.item.SwordItem;
 import net.minecraft.item.ToolMaterials;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
@@ -17,6 +17,13 @@ public class Items {
             new Item(new FabricItemSettings()));
     public static final Item SOUL_TRANSPORT = registerItem("soul_transport",
             new Item(new FabricItemSettings()));
+    public static final Item TWISTED_DAGGER = registerItem("twisted_dagger",
+            new TwistedDagger(
+                    ToolMaterials.IRON,
+                    1,
+                    -2.4F,
+                    new FabricItemSettings()
+            ));
     public static final Item STAINED_SWORD = registerItem("stained_sword",
             new StainedSwordMaterialorsmt(
                     ToolMaterials.NETHERITE,

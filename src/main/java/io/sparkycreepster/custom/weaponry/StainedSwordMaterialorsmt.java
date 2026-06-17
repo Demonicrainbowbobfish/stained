@@ -1,6 +1,7 @@
-package io.sparkycreepster.custom;
+package io.sparkycreepster.custom.weaponry;
 
 import io.sparkycreepster.custom.dataclasses.BloodmarkData;
+import io.sparkycreepster.custom.generateRandomBetween10;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
