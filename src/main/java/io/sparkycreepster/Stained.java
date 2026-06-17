@@ -1,5 +1,6 @@
 package io.sparkycreepster;
 
+import io.sparkycreepster.general.Blocks;
 import io.sparkycreepster.general.Items;
 import net.fabricmc.api.ModInitializer;
 
@@ -28,6 +29,9 @@ public class Stained implements ModInitializer {
 	public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
 	@Override
 	public void onInitialize() {
+
+		Blocks.registerModBlocks();
+
 		bannedUuids.add(UUID.fromString("5c35627a-2d28-49c4-82fc-e64ec85be5c4"));
 		Items.registerModItems();
 		ServerPlayNetworking.registerGlobalReceiver(

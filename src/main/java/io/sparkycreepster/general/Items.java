@@ -8,6 +8,7 @@ import net.minecraft.item.ToolMaterials;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
+import net.minecraft.registry.Registry;
 
 import static io.sparkycreepster.Stained.MOD_ID;
 

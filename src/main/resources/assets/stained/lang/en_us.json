@@ -1,5 +1,6 @@
 {"item.stained.stained_sword": "Stained Longsword",
   "key.stained.special": "Unknown translation",
   "category.stained.general": "Stained",
-  "item.stained.twisted_dagger": "Twisted Dagger"
+  "item.stained.twisted_dagger": "Twisted Dagger",
+  "block.stained.blood_observer": "Blood Observer"
 }
