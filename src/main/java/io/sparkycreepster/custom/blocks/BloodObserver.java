@@ -1,4 +1,11 @@
 package io.sparkycreepster.custom.blocks;
 
-public class BloodObserver {
+import net.minecraft.block.Block;
+
+public class BloodObserver extends Block {
+    public BloodObserver(Settings settings) {
+        super(settings);
+    }
+
+
 }
