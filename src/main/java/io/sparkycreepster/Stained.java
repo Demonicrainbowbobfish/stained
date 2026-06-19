@@ -1,5 +1,9 @@
 package io.sparkycreepster;
 
+// A note to whoever is reading this - I poured blood, sweat, and tears into this project, so whatever you do, don't steal it.
+// And arathain, I thank you in particular for getting me started on my journey. I really have no idea if you remember me, but if so,
+// I've come a long way since we talked. I give my sincerest thanks! Text me on discord if you do see this and wany to talk! (Discord username: SparkyCreepster)
+
 import io.sparkycreepster.general.Blocks;
 import io.sparkycreepster.general.Items;
 import net.fabricmc.api.ModInitializer;

@@ -13,7 +13,7 @@ public class BloodVial extends Item {
     }
 
     public static void onUse(UUID uuid, Hand hand, ItemStack stack) {
-
+        // not yet implimented! Will be somewhat like charter's contract system.
 
     }
 }

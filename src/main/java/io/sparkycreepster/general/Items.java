@@ -1,6 +1,7 @@
 package io.sparkycreepster.general;
 
-import io.sparkycreepster.custom.weaponry.StainedSwordMaterialorsmt;
+import io.sparkycreepster.Stained;
+import io.sparkycreepster.custom.weaponry.StainedSword;
 import io.sparkycreepster.custom.weaponry.TwistedDagger;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.minecraft.item.Item;
@@ -8,7 +9,6 @@ import net.minecraft.item.ToolMaterials;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
-import net.minecraft.registry.Registry;
 
 import static io.sparkycreepster.Stained.MOD_ID;
 
@@ -26,7 +26,7 @@ public class Items {
                     new FabricItemSettings()
             ));
     public static final Item STAINED_SWORD = registerItem("stained_sword",
-            new StainedSwordMaterialorsmt(
+            new StainedSword(
                     ToolMaterials.NETHERITE,
                     4,
                     -2.4F,
@@ -39,7 +39,7 @@ public class Items {
 
 
     public static void registerModItems() {
-
+        Stained.LOGGER.info("Registering mod items, hang tight.");
 
     }
 }

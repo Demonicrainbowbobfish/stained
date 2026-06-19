@@ -13,11 +13,11 @@ import net.minecraft.util.Hand;
 
 import java.util.*;
 
-public class StainedSwordMaterialorsmt extends SwordItem {
+public class StainedSword extends SwordItem {
     private static final Map<UUID, BloodmarkData> BLOODMARKS = new HashMap<>();
     private static final Map<UUID, List<Long>> HITS = new HashMap<>();
 
-    public StainedSwordMaterialorsmt(ToolMaterial material, int attackDamage, float attackSpeed, Settings settings) {
+    public StainedSword(ToolMaterial material, int attackDamage, float attackSpeed, Settings settings) {
         super(material, attackDamage, attackSpeed, settings);
     }
     // Mark with incomplete blood mark on right click
@@ -61,18 +61,20 @@ public class StainedSwordMaterialorsmt extends SwordItem {
         }
         BloodmarkData mark = BLOODMARKS.get(id);
 
-
+        if (mark.hasExpired(currentTime)) {
+            BLOODMARKS.remove(id);
+            HITS.remove(id);
+            return super.postHit(stack, target, attacker);
+        }
         List<Long> hits = HITS.computeIfAbsent(id, k -> new ArrayList<>());
         hits.removeIf(time -> currentTime - time > 1200);
         hits.add(currentTime);
         int hitCount = hits.size();
-        if (hitCount >= mark.getRequiredHits()) {
+        if (hitCount >= mark.getRequiredHits() && !mark.isComplete()) {
             // this runs when blood thing is fufilled
+            mark.completeMark(currentTime);
             if (!attacker.getWorld().isClient() && attacker instanceof PlayerEntity player) {
-                player.sendMessage(
-                        Text.literal("Shit should work now"),
-                        false
-                );
+                // for later
             }
         }
         if (!attacker.getWorld().isClient() && attacker instanceof PlayerEntity player) {

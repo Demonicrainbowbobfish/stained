@@ -1,9 +1,9 @@
 package io.sparkycreepster.custom.dataclasses;
 
 public class BloodmarkData {
-    private int requiredHits;
+    private final int requiredHits;
     private boolean complete;
-    private long markStartTime;
+    private final long markStartTime;
     private long completeUntil;
     public void setComplete(boolean complete) {
         this.complete = complete;
@@ -16,6 +16,18 @@ public class BloodmarkData {
 
         return this.complete;
     }
+    public boolean hasExpired(long currentTime) {
+        if (complete) {
+            return currentTime > completeUntil;
+        }
+
+        return currentTime - markStartTime > 6000;
+    }
+    public void completeMark(long currentTime) {
+        this.complete = true;
+        this.completeUntil = currentTime + 2400;
+    }
+
     public BloodmarkData(int requiredHits, long markStartTime) {
         this.requiredHits = requiredHits;
         this.markStartTime = markStartTime;

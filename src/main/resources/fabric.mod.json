@@ -3,12 +3,13 @@
 	"id": "stained",
 	"version": "${version}",
 	"name": "Stained",
-	"description": "This is an example description! Tell everyone what your mod is about!",
+	"description": "",
 	"authors": [
-		"Me!"
+		"SparkyCreepster - Artist & Programmer"
+
 	],
 	"contact": {
-		"homepage": "https://fabricmc.net/",
+		"homepage": "https://www.youtube.com/@SparkyCreepster-n5k",
 		"sources": "https://github.com/FabricMC/fabric-example-mod"
 	},
 	"license": "CC0-1.0",
