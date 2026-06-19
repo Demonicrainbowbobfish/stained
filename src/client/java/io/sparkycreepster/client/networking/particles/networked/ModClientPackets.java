@@ -11,9 +11,7 @@ import team.lodestar.lodestone.systems.particle.render_types.LodestoneWorldParti
 import java.awt.*;
 
 public class ModClientPackets {
-    public static void registerClientPackets() {
-        // Put packets here
-    }
+
 
     // Actual particles dumbitch
     // i'll use this later
@@ -21,7 +19,11 @@ public class ModClientPackets {
         WorldParticleBuilder.create(Particles.BLOOD1)
                 .setLifetime(160)
                 .setColorData(ColorParticleData.create(startingColor, endingColor).setCoefficient(3f).setEasing(Easing.SINE_IN_OUT).build())
-                .setRenderType(LodestoneWorldParticleRenderType.LUMITRANSPARENT)
+                .setRenderType(LodestoneWorldParticleRenderType.PARTICLE_SHEET_OPAQUE)
                 .spawn(level, pos.x, pos.y+0, pos.z);
+    }
+
+    public static void registerClientPackets() {
+        // Put packets here
     }
 }

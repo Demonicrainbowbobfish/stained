@@ -1,14 +1,17 @@
 package io.sparkycreepster.client;
 
 import io.sparkycreepster.Stained;
+import io.sparkycreepster.client.networking.particles.networked.ModClientPackets;
 import io.sparkycreepster.general.Items;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
+import net.fabricmc.fabric.api.client.particle.v1.ParticleFactoryRegistry;
 import net.fabricmc.fabric.api.networking.v1.PacketByteBufs;
 import net.minecraft.client.item.ModelPredicateProviderRegistry;
 import net.minecraft.client.option.KeyBinding;
+import net.fabricmc.fabric.api.client.particle.v1.ParticleFactoryRegistry;
 import net.minecraft.client.util.InputUtil;
 import net.minecraft.network.PacketByteBuf;
 import net.minecraft.util.Identifier;
@@ -16,6 +19,10 @@ import org.lwjgl.glfw.GLFW;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 
 public class StainedClient implements ClientModInitializer {
+	// Register particles!
+
+
+
 	private static KeyBinding toggleKey = KeyBindingHelper.registerKeyBinding(new KeyBinding(
 			"key.stained.toggle",
 			InputUtil.Type.KEYSYM,

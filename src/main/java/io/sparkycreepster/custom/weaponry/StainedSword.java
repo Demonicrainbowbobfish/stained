@@ -43,8 +43,8 @@ public class StainedSword extends SwordItem {
         );
         BLOODMARKS.put(id, mark);
         user.sendMessage(
-                Text.literal("Bloodmarked: " + requiredHits + " hits required"),
-                false
+                Text.literal("§c§k 32" + requiredHits + "§c§k 32"),
+                true
         );
         return ActionResult.SUCCESS;
     }
@@ -72,15 +72,22 @@ public class StainedSword extends SwordItem {
         int hitCount = hits.size();
         if (hitCount >= mark.getRequiredHits() && !mark.isComplete()) {
             // this runs when blood thing is fufilled
+            System.out.println("BLOODMARK COMPLETE");
             mark.completeMark(currentTime);
             if (!attacker.getWorld().isClient() && attacker instanceof PlayerEntity player) {
                 // for later
+                player.sendMessage(
+                        Text.literal("BLOODMARK FULFILLED"),
+                        true
+                );
             }
         }
+
+
         if (!attacker.getWorld().isClient() && attacker instanceof PlayerEntity player) {
             player.sendMessage(
-                    Text.literal("Hit count (last 60s): " + hitCount),
-                    false
+                    Text.literal(hitCount + "§c§k 20"),
+                    true
             );
         }
         return super.postHit(stack, target, attacker);
