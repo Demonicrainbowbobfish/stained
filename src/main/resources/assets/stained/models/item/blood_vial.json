@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "stained:item/blood_vial"
+    "layer0": "stained:item/empty_blood_vial"
   }
 }
