@@ -2,5 +2,13 @@
   "parent": "minecraft:item/generated",
   "textures": {
     "layer0": "stained:item/empty_blood_vial"
-  }
+  },
+  "overrides": [
+    {
+      "predicate": {
+        "filled": 1
+      },
+      "model": "stained:item/full_blood_vial"
+    }
+  ]
 }

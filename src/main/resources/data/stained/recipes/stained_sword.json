@@ -1,9 +1,9 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-    " B ",
-    " I ",
-    " I "
+    " DB",
+    "AIC",
+    "ID "
   ],
   "key": {
     "B": {
@@ -11,6 +11,15 @@
     },
     "I": {
       "item": "minecraft:iron_ingot"
+    },
+    "C": {
+      "item": "minecraft:redstone_dust"
+    },
+    "A": {
+      "item": "minecraft:spider_eye"
+    },
+    "D": {
+      "item": "minecraft:netherite_ingot"
     }
   },
   "result": {

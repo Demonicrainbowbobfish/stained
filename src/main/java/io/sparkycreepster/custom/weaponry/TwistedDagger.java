@@ -2,6 +2,7 @@ package io.sparkycreepster.custom.weaponry;
 
 import io.sparkycreepster.Stained;
 import io.sparkycreepster.general.Items;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.SwordItem;
@@ -22,6 +23,7 @@ public class TwistedDagger extends SwordItem {
         if (offhand.isOf(Items.BLOOD_VIAL)) {
             ItemStack vial = new ItemStack(Items.BLOOD_VIAL);
             offhand.getOrCreateNbt().putUuid("BloodOf", user.getUuid());
+            offhand.getOrCreateNbt().putBoolean("Filled", true);
             offhand.getOrCreateNbt().putString(
                     "BloodDisplayName",
                     user.getName().getString()
@@ -30,5 +32,19 @@ public class TwistedDagger extends SwordItem {
         }
 
         return TypedActionResult.success(stack);
+    }
+
+    // for hitting mobs for crafting recipes
+    public boolean postHit(ItemStack stack, LivingEntity target, LivingEntity attacker) {
+
+        if (attacker instanceof PlayerEntity player) {
+            ItemStack offhand = player.getOffHandStack();
+            if (offhand.isOf(Items.BLOOD_VIAL)) {
+                offhand.getOrCreateNbt().putBoolean("Filled", true);
+                offhand.getOrCreateNbt().putBoolean("UsedOnNonPlayerEntity", true);
+            }
+        }
+
+        return super.postHit(stack, target, attacker);
     }
 }
