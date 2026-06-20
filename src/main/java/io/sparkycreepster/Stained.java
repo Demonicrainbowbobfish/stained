@@ -31,6 +31,14 @@ public class Stained implements ModInitializer {
 	public static final Identifier GHOST_UPDATE =
 			new Identifier(MOD_ID, "ghost_update");
 	public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
+
+
+
+	// particles
+
+
+
+
 	@Override
 	public void onInitialize() {
 
