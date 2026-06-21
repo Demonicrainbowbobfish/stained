@@ -10,6 +10,8 @@ import net.minecraft.item.ToolMaterial;
 import net.minecraft.text.Text;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
+import net.minecraft.util.TypedActionResult;
+import net.minecraft.world.World;
 
 import java.util.*;
 
@@ -20,6 +22,21 @@ public class StainedSword extends SwordItem {
     public StainedSword(ToolMaterial material, int attackDamage, float attackSpeed, Settings settings) {
         super(material, attackDamage, attackSpeed, settings);
     }
+
+    @Override
+    public TypedActionResult<ItemStack> use(
+            World world,
+            PlayerEntity user,
+            Hand hand
+    ) {
+        if (user.isSneaking()) {
+            // shift
+        }
+        else {
+            // idk
+        }
+    }
+
     // Mark with incomplete blood mark on right click
     @Override
     public ActionResult useOnEntity(
