@@ -23,20 +23,43 @@ public class StainedSword extends SwordItem {
         super(material, attackDamage, attackSpeed, settings);
     }
 
+    // Ability swtiching with NBT data!!
     @Override
     public TypedActionResult<ItemStack> use(
             World world,
             PlayerEntity user,
             Hand hand
     ) {
+        ItemStack stack = user.getStackInHand(hand);
+
         if (user.isSneaking()) {
-            // shift
+            int ability = stack.getOrCreateNbt().getInt("SelectedAbility");
+            ability++;
+
+            if (ability > 1) {
+                ability = 0;
+            }
+
+            stack.getOrCreateNbt().putInt("SelectedAbility", ability);
+
+            user.sendMessage(
+                    Text.literal(ability == 0 ? "Selected: Decent" : "Selected: Burst"), true
+            );
+
+
+            return TypedActionResult.success(stack);
+        } else if (hand == Hand.OFF_HAND) {
+            user.sendMessage(Text.literal("ABILITY!"), true);
+
+
+
+            
         }
-        else {
-            // idk
-        }
+        return TypedActionResult.success(stack);
     }
 
+    
+    
     // Mark with incomplete blood mark on right click
     @Override
     public ActionResult useOnEntity(
