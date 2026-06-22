@@ -18,7 +18,16 @@ import java.util.*;
 public class StainedSword extends SwordItem {
     private static final Map<UUID, BloodmarkData> BLOODMARKS = new HashMap<>();
     private static final Map<UUID, List<Long>> HITS = new HashMap<>();
+    private UUID getFulfilledTarget(PlayerEntity player) {
+        for (Map.Entry<UUID, BloodmarkData> entry : BLOODMARKS.entrySet()) {
+            BloodmarkData mark1 = entry.getValue();
+            if (mark1.isComplete() && mark1.getOwnerUuid().equals(player.getUuid())) {
+                return entry.getKey();
+            }
+        }
+        return null;
 
+    }
     public StainedSword(ToolMaterial material, int attackDamage, float attackSpeed, Settings settings) {
         super(material, attackDamage, attackSpeed, settings);
     }
@@ -50,7 +59,13 @@ public class StainedSword extends SwordItem {
             return TypedActionResult.success(stack);
         } else if (hand == Hand.OFF_HAND) {
             user.sendMessage(Text.literal("ABILITY!"), true);
-
+            int ability = stack.getOrCreateNbt().getInt("SelectedAbility");
+            if (ability == 0) {
+                // decent abil
+            }
+            if (ability == 1) {
+                // burst
+            }
 
 
             
@@ -79,7 +94,8 @@ public class StainedSword extends SwordItem {
         int requiredHits = random.getRangedInt(10, 20);
         BloodmarkData mark = new BloodmarkData(
                 requiredHits,
-                currentTime
+                currentTime,
+                user.getUuid()
         );
         BLOODMARKS.put(id, mark);
         user.sendMessage(
