@@ -1,7 +1,9 @@
 package io.sparkycreepster.custom.weaponry;
 
+import io.sparkycreepster.custom.abilities.Decent;
 import io.sparkycreepster.custom.dataclasses.BloodmarkData;
 import io.sparkycreepster.custom.generateRandomBetween10;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
@@ -11,6 +13,7 @@ import net.minecraft.text.Text;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.TypedActionResult;
+import net.minecraft.util.math.Box;
 import net.minecraft.world.World;
 
 import java.util.*;
@@ -21,17 +24,40 @@ public class StainedSword extends SwordItem {
     private UUID getFulfilledTarget(PlayerEntity player) {
         for (Map.Entry<UUID, BloodmarkData> entry : BLOODMARKS.entrySet()) {
             BloodmarkData mark1 = entry.getValue();
+
             if (mark1.isComplete() && mark1.getOwnerUuid().equals(player.getUuid())) {
                 return entry.getKey();
             }
         }
+
         return null;
 
     }
     public StainedSword(ToolMaterial material, int attackDamage, float attackSpeed, Settings settings) {
         super(material, attackDamage, attackSpeed, settings);
     }
+    private LivingEntity getFulfilledTargetEntity(PlayerEntity player) {
+        UUID target = getFulfilledTarget(player);
 
+        if (target == null) {
+            return null;
+        }
+
+        Box searchBox = player.getBoundingBox().expand(200);
+        List<Entity> entities = player.getWorld().getOtherEntities(
+                player,
+                searchBox
+        );
+        for (Entity entity : entities) {
+            if (entity.getUuid().equals(target)) {
+                if (entity instanceof LivingEntity livingTarget) {
+                    return livingTarget;
+                }
+            }
+        }
+
+        return null;
+    }
     // Ability swtiching with NBT data!!
     @Override
     public TypedActionResult<ItemStack> use(
@@ -58,14 +84,29 @@ public class StainedSword extends SwordItem {
 
             return TypedActionResult.success(stack);
         } else if (hand == Hand.OFF_HAND) {
-            user.sendMessage(Text.literal("ABILITY!"), true);
-            int ability = stack.getOrCreateNbt().getInt("SelectedAbility");
-            if (ability == 0) {
-                // decent abil
+            LivingEntity target = getFulfilledTargetEntity(user);
+            if (target == null) {
+                user.sendMessage(Text.literal("No targets found nearby."), true);
             }
-            if (ability == 1) {
-                // burst
+            else {
+                user.sendMessage(Text.literal(target.getName().getString()), true);
+                int ability = stack.getOrCreateNbt().getInt("SelectedAbility");
+                if (ability == 0) {
+                    // decent abil
+                    if (target.isOnGround()) {
+                        // do nothing
+                    }
+                    else {
+                        // do something
+                        user.sendMessage(Text.literal("Yep"));
+                        new Decent().use(user, target);
+                    }
+                }
+                if (ability == 1) {
+                    // burst
+                }
             }
+
 
 
             

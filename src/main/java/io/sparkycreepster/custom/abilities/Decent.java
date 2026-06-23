@@ -10,7 +10,7 @@ public class Decent implements BloodAbility{
             return;
         }
 
-        target.setVelocity(0, 3, 0);
+        target.setVelocity(0, -3, 0);
     }
     @Override
     public String getName() {
