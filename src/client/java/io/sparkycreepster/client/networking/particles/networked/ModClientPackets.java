@@ -1,6 +1,9 @@
 package io.sparkycreepster.client.networking.particles.networked;
 
+import io.sparkycreepster.custom.networking.packets.Blood1SpawnPacket;
+import io.sparkycreepster.custom.networking.packets.Packets;
 import io.sparkycreepster.custom.particles.CustomLodestoneParticles;
+import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import team.lodestar.lodestone.systems.easing.Easing;
@@ -13,7 +16,6 @@ import java.awt.*;
 public class ModClientPackets {
 
 
-    // Actual particles dumbitch
     // i'll use this later
     public static void spawnBloodSplash(World level, Vec3d pos, Color startingColor, Color endingColor) {
         WorldParticleBuilder.create(CustomLodestoneParticles.BLOOD1)
@@ -25,5 +27,16 @@ public class ModClientPackets {
 
     public static void registerClientPackets() {
         // Put packets here
+        ClientPlayNetworking.registerGlobalReceiver(Packets.BLOOD1_SPAWN, ((client, handler, buf, responseSender) -> {
+            Blood1SpawnPacket packet = new Blood1SpawnPacket(buf);
+            client.execute(() -> {
+                World level = client.world;
+                if (level != null) {
+
+
+
+                }
+            });
+        }));
     }
 }

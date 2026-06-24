@@ -6,7 +6,8 @@
 		"PlayerListModifier",
 		"JoinMessageBlocker",
 		"PlayerCancelMixin",
-		"CancelShadowRender"
+		"CancelShadowRender",
+		"PlayerEntityRendererMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1

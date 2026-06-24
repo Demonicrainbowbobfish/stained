@@ -11,6 +11,7 @@ public class Decent implements BloodAbility{
         if (target.isOnGround()) {
             return;
         }
+        target.addVelocity(0, -3, 0);
 
     }
     @Override
