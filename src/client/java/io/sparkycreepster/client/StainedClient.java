@@ -1,7 +1,7 @@
 package io.sparkycreepster.client;
 
 import io.sparkycreepster.Stained;
-import io.sparkycreepster.client.networking.particles.networked.ModClientPackets;
+import io.sparkycreepster.custom.particles.CustomLodestoneParticles;
 import io.sparkycreepster.general.Items;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
@@ -11,12 +11,10 @@ import net.fabricmc.fabric.api.client.particle.v1.ParticleFactoryRegistry;
 import net.fabricmc.fabric.api.networking.v1.PacketByteBufs;
 import net.minecraft.client.item.ModelPredicateProviderRegistry;
 import net.minecraft.client.option.KeyBinding;
-import net.fabricmc.fabric.api.client.particle.v1.ParticleFactoryRegistry;
 import net.minecraft.client.util.InputUtil;
-import net.minecraft.network.PacketByteBuf;
 import net.minecraft.util.Identifier;
 import org.lwjgl.glfw.GLFW;
-import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
+import team.lodestar.lodestone.systems.particle.world.type.LodestoneWorldParticleType;
 
 public class StainedClient implements ClientModInitializer {
 	// Register particles!
@@ -29,6 +27,7 @@ public class StainedClient implements ClientModInitializer {
 			GLFW.GLFW_KEY_V,
 			"category.stained"
 	));
+
 	@Override
 	public void onInitializeClient() {
 

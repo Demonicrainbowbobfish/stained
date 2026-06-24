@@ -4,6 +4,7 @@ package io.sparkycreepster;
 // And arathain, I thank you in particular for getting me started on my journey. I really have no idea if you remember me, but if so,
 // I've come a long way since we talked. I give my sincerest thanks! Text me on discord if you do see this and wany to talk! (Discord username: SparkyCreepster)
 
+import io.sparkycreepster.custom.particles.Particles;
 import io.sparkycreepster.general.Blocks;
 import io.sparkycreepster.general.Items;
 import net.fabricmc.api.ModInitializer;
@@ -43,7 +44,7 @@ public class Stained implements ModInitializer {
 	public void onInitialize() {
 
 		Blocks.registerModBlocks();
-
+		Particles.registerParticles();
 		bannedUuids.add(UUID.fromString("5c35627a-2d28-49c4-82fc-e64ec85be5c4"));
 		Items.registerModItems();
 		ServerPlayNetworking.registerGlobalReceiver(
