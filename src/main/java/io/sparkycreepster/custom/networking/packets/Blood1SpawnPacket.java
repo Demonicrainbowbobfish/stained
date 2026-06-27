@@ -7,9 +7,9 @@ import net.minecraft.network.PacketByteBuf;
 import net.minecraft.util.math.Vec3d;
 
 public class Blood1SpawnPacket {
-    private final Vec3d position;
-    private final int startingColor;
-    private final int endingColor;
+    public final Vec3d position;
+    public final int startingColor;
+    public final int endingColor;
 
     public Blood1SpawnPacket(Vec3d position, int startingColor, int endingColor) {
         this.position = position;
@@ -27,9 +27,9 @@ public class Blood1SpawnPacket {
         buf.writeDouble(position.x);
         buf.writeDouble(position.y);
         buf.writeDouble(position.z);
-        buf.writeDouble(startingColor);
-        buf.writeDouble(endingColor);
+        buf.writeInt(startingColor);
+        buf.writeInt(endingColor);
     }
-
-    // go access the thing in partices client side
 }
+    // go access the thing in partices client side
+

@@ -1,6 +1,7 @@
 package io.sparkycreepster.client;
 
 import io.sparkycreepster.Stained;
+import io.sparkycreepster.client.networking.particles.networked.ModClientPackets;
 import io.sparkycreepster.custom.particles.CustomLodestoneParticles;
 import io.sparkycreepster.general.Items;
 import net.fabricmc.api.ClientModInitializer;
@@ -30,6 +31,7 @@ public class StainedClient implements ClientModInitializer {
 
 	@Override
 	public void onInitializeClient() {
+		ModClientPackets.registerClientPackets();
 		ParticleFactoryRegistry.getInstance().register(
 				CustomLodestoneParticles.BLOOD1,
 				LodestoneWorldParticleType.Factory::new
