@@ -99,7 +99,10 @@ public class    StainedSword extends SwordItem {
                     else {
                         // do something
                         user.sendMessage(Text.literal("Yep"));
-                        new Decent().use(user, target);
+
+                        if (!world.isClient()) {
+                            new Decent().use(user, target);
+                        }
                     }
                 }
                 if (ability == 1) {

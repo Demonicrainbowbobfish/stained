@@ -27,7 +27,7 @@ public class ModClientPackets {
         WorldParticleBuilder.create(CustomLodestoneParticles.BLOOD1)
                 .setLifetime(160)
                 .setColorData(ColorParticleData.create(startingColor, endingColor).setCoefficient(3f).setEasing(Easing.SINE_IN_OUT).build())
-                .setRenderType(LodestoneWorldParticleRenderType.CUSTOM)
+                .setRenderType(LodestoneWorldParticleRenderType.ADDITIVE)
                 .addMotion(motionX, motionY, motionZ)
                 .spawn(level, pos.x, pos.y+0, pos.z);
     }

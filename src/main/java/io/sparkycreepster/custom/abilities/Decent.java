@@ -16,23 +16,32 @@ public class Decent implements BloodAbility{
 
     @Override
     public void use(PlayerEntity player, LivingEntity target) {
-
+        System.out.println(
+                "World class: " + player.getWorld().getClass().getName()
+        );
+        System.out.println(
+                "isClient = " + player.getWorld().isClient()
+        );
         if (target.isOnGround()) {
             return;
         }
+        // still crashes
+        // don't ask me why i have no idea
+
         Color startColor = new Color(150, 0, 0);
         Color endColor = new Color(90, 0, 0);
-        for (ServerPlayerEntity player2 : PlayerLookup.tracking(target)) {
-            PacketByteBuf buf = PacketByteBufs.create();
+        Blood1SpawnPacket packet = new Blood1SpawnPacket(
+                target.getPos(),
+                startColor.getRGB(),
+                endColor.getRGB()
 
-            new Blood1SpawnPacket(
-                    target.getPos(),
-                    startColor.getRGB(),
-                    endColor.getRGB()
-            ).toBytes(buf);
-
-            ServerPlayNetworking.send(player2, Packets.BLOOD1_SPAWN, buf);
+        );
+        PacketByteBuf buf = PacketByteBufs.create();
+        packet.toBytes(buf);
+        for (ServerPlayerEntity playerII : PlayerLookup.tracking(target)) {
+            ServerPlayNetworking.send(playerII, Packets.BLOOD1_SPAWN, buf);
         }
+
 
         target.addVelocity(0, -3, 0);
 
