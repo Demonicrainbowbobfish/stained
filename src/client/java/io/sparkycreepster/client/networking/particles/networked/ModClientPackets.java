@@ -19,17 +19,23 @@ public class ModClientPackets {
     // i'll use this later
     public static void spawnBloodSplash(World level, Vec3d pos, Color startingColor, Color endingColor) {
         Random random = level.random;
+        // spawns 40 particles per call
+        for (int i = 0; i < 40; i++) {
+            // generate random motion values
+            double motionX = (random.nextDouble() - 0.5) * 0.4;
+            double motionY = random.nextDouble() * 0.4;
+            double motionZ = (random.nextDouble() - 0.5) * 0.4;
+            WorldParticleBuilder.create(CustomLodestoneParticles.BLOOD1)
+                    .setLifetime(40)
+                    .setColorData(ColorParticleData.create(startingColor, endingColor).setCoefficient(3f).setEasing(Easing.SINE_IN_OUT).build())
+                    .setRenderType(LodestoneWorldParticleRenderType.ADDITIVE)
+                    .addMotion(motionX, motionY, motionZ)
 
-        // generate random motion values
-        double motionX = (random.nextDouble() - 0.5) * 0.2;
-        double motionY = random.nextDouble() * 0.2;
-        double motionZ = (random.nextDouble() - 0.5) * 0.2;
-        WorldParticleBuilder.create(CustomLodestoneParticles.BLOOD1)
-                .setLifetime(160)
-                .setColorData(ColorParticleData.create(startingColor, endingColor).setCoefficient(3f).setEasing(Easing.SINE_IN_OUT).build())
-                .setRenderType(LodestoneWorldParticleRenderType.ADDITIVE)
-                .addMotion(motionX, motionY, motionZ)
-                .spawn(level, pos.x, pos.y+0, pos.z);
+                    .setGravityStrength(1)
+                    .spawn(level, pos.x, pos.y+0, pos.z);
+
+        }
+
     }
 
     public static void registerClientPackets() {
