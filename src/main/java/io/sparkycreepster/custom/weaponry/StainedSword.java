@@ -188,7 +188,7 @@ public class    StainedSword extends SwordItem {
             player.sendMessage(
                     Text.literal(hitCount + "§c§k 20"),
                     true
-            );
+            );  
         }
         return super.postHit(stack, target, attacker);
 

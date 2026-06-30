@@ -11,7 +11,8 @@ public class CustomLodestoneParticles {
 
     public static final LodestoneWorldParticleType BLOOD1 = register("blood1",
             new LodestoneWorldParticleType());
-
+    public static final LodestoneWorldParticleType SHOCKWAVE = register("shockwave",
+            new LodestoneWorldParticleType());
 
 
     private static LodestoneWorldParticleType register(String name, LodestoneWorldParticleType particle) {

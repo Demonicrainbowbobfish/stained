@@ -36,6 +36,10 @@ public class StainedClient implements ClientModInitializer {
 				CustomLodestoneParticles.BLOOD1,
 				LodestoneWorldParticleType.Factory::new
 		);
+		ParticleFactoryRegistry.getInstance().register(
+				CustomLodestoneParticles.SHOCKWAVE,
+				LodestoneWorldParticleType.Factory::new
+		);
 
 		// This entrypoint is suitable for setting up client-specific logic, such as rendering.
 		ModelPredicateProviderRegistry.register(
