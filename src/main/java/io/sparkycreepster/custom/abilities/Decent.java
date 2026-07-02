@@ -73,8 +73,8 @@ public class Decent implements BloodAbility{
         if (target.isOnGround()) {
             return;
         }
-        // still crashes
-        // don't ask me why i have no idea
+
+
 
         Color startColor = new Color(150, 0, 0);
         Color endColor = new Color(90, 0, 0);
@@ -90,28 +90,14 @@ public class Decent implements BloodAbility{
             ServerPlayNetworking.send(playerII, Packets.BLOOD1_SPAWN, buf);
             ServerPlayNetworking.send(playerII, Packets.TINTED_EXPLOSION, buf);
         }
-
-
+        System.out.println("Watching " + target.getName().getString());
+        SlamManager.watch(target);
         target.addVelocity(0, -3, 0);
+
+
+
         target.velocityModified = true;
-        ServerTickEvents.END_WORLD_TICK.register(world -> {
-            Iterator<UUID> iterator = SLAMMED.iterator();
-            while (iterator.hasNext()) {
-                UUID id = iterator.next();
 
-                Entity entity = world.getEntity(id);
-
-                if (!(entity instanceof LivingEntity living)) {
-                    iterator.remove();
-                    continue;
-                }
-                if (living.isOnGround()) {
-                    iterator.remove();
-
-                    spawnImpact((ServerWorld) target.getWorld(), target);
-                }
-            }
-        });
     }
     @Override
     public String getName() {
