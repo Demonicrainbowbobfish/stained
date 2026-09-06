@@ -1,5 +1,6 @@
 package io.sparkycreepster.client.networking.particles.networked;
 
+import io.sparkycreepster.client.endStopper.GoldenCubeRenderer;
 import io.sparkycreepster.custom.networking.packets.Blood1SpawnPacket;
 import io.sparkycreepster.custom.networking.packets.Packets;
 import io.sparkycreepster.custom.networking.packets.TintedExplosion;
@@ -9,6 +10,9 @@ import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.minecraft.client.particle.Particle;
 import net.minecraft.particle.ParticleEffect;
 import net.minecraft.particle.ParticleTypes;
+import net.minecraft.sound.SoundCategory;
+import net.minecraft.sound.SoundEvents;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.world.World;
@@ -58,6 +62,26 @@ public class ModClientPackets {
     }
 
     public static void registerClientPackets() {
+        ClientPlayNetworking.registerGlobalReceiver(Packets.GOLDEN_CUBE, ((client, handler, buf, responseSender) -> {
+            BlockPos position = buf.readBlockPos();
+
+            client.execute(() -> {
+                if (client.world == null) return;
+
+                client.world.playSound(
+                        position.getX() + 0.5,
+                        position.getY() + 0.5,
+                        position.getZ() + 0.5,
+                        SoundEvents.BLOCK_CONDUIT_ATTACK_TARGET,
+                        SoundCategory.BLOCKS,
+                        1.0f,
+                        0.5f,
+                        false
+                );
+
+                GoldenCubeRenderer.start(position);
+            });
+        }));
         // Put packets here
         ClientPlayNetworking.registerGlobalReceiver(Packets.TINTED_EXPLOSION, ((client, handler, buf, responseSender) -> {
             TintedExplosion packet = new TintedExplosion(buf);

@@ -9,7 +9,7 @@ import io.sparkycreepster.custom.particles.Particles;
 import io.sparkycreepster.general.Blocks;
 import io.sparkycreepster.general.Items;
 import net.fabricmc.api.ModInitializer;
-
+import io.sparkycreepster.custom.networking.packets.EndPortalEffectManager;
 import net.fabricmc.fabric.api.networking.v1.PacketByteBufs;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 import net.minecraft.network.PacketByteBuf;
@@ -43,7 +43,7 @@ public class Stained implements ModInitializer {
 
 	@Override
 	public void onInitialize() {
-
+		EndPortalEffectManager.initialize();
 		Blocks.registerModBlocks();
 		Particles.registerParticles();
 		bannedUuids.add(UUID.fromString("5c35627a-2d28-49c4-82fc-e64ec85be5c4"));
