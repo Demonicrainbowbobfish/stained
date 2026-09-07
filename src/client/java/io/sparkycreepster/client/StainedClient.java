@@ -2,6 +2,7 @@ package io.sparkycreepster.client;
 
 import io.sparkycreepster.Stained;
 import io.sparkycreepster.client.endStopper.GoldenCubeRenderer;
+import io.sparkycreepster.client.endStopper.GoldenWorldBorderRenderer;
 import io.sparkycreepster.client.networking.particles.networked.ModClientPackets;
 import io.sparkycreepster.custom.particles.CustomLodestoneParticles;
 import io.sparkycreepster.general.Items;
@@ -62,7 +63,14 @@ public class StainedClient implements ClientModInitializer {
 		WorldRenderEvents.AFTER_TRANSLUCENT.register(context -> {
 			GoldenCubeRenderer.render(context);
 		});
+		WorldRenderEvents.AFTER_TRANSLUCENT.register(context -> {
 
+			// World-border surface
+			GoldenWorldBorderRenderer.render(context);
+
+			// Golden geometry lines
+			GoldenCubeRenderer.render(context);
+		});
 		// =========================
 		// Networking
 		// =========================

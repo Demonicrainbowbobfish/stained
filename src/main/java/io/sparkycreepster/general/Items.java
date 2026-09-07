@@ -14,6 +14,8 @@ import static io.sparkycreepster.Stained.MOD_ID;
 
 public class Items {
     // Register items here
+    public static final Item WOVEN_BOOK = registerItem("",
+            new Item(new FabricItemSettings()));
     public static final Item BLOOD_VIAL = registerItem("blood_vial",
             new Item(new FabricItemSettings()));
     public static final Item SOUL_TRANSPORT = registerItem("soul_transport",

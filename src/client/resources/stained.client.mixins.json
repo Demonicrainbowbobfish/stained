@@ -8,7 +8,8 @@
 		"PlayerCancelMixin",
 		"CancelShadowRender",
 		"PlayerEntityRendererMixin",
-		"CancelNameplate"
+		"CancelNameplate",
+		"ObfuscateDeathMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1

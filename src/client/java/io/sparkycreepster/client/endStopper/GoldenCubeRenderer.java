@@ -75,7 +75,27 @@ public class GoldenCubeRenderer {
             }
         }
     }
+    public static List<BlockPos> getActivePositions() {
 
+        List<BlockPos> positions = new ArrayList<>();
+
+        for (Effect effect : ACTIVE_EFFECTS) {
+            positions.add(effect.position);
+        }
+
+        return positions;
+    }
+    public static float getFadeFor(BlockPos position) {
+
+        for (Effect effect : ACTIVE_EFFECTS) {
+
+            if (effect.position.equals(position)) {
+                return getFade(effect.ticks);
+            }
+        }
+
+        return 0.0f;
+    }
     /**
      * Returns true if at least one cube is currently active.
      */
