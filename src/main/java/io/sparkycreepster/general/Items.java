@@ -1,6 +1,8 @@
 package io.sparkycreepster.general;
 
 import io.sparkycreepster.Stained;
+import io.sparkycreepster.custom.items.Ledger;
+import io.sparkycreepster.custom.items.TaintedHorn;
 import io.sparkycreepster.custom.weaponry.StainedSword;
 import io.sparkycreepster.custom.weaponry.TwistedDagger;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
@@ -14,8 +16,8 @@ import static io.sparkycreepster.Stained.MOD_ID;
 
 public class Items {
     // Register items here
-    public static final Item WOVEN_BOOK = registerItem("",
-            new Item(new FabricItemSettings()));
+    public static final Item LEDGER = registerItem("ledger",
+            new Ledger(new FabricItemSettings()));
     public static final Item BLOOD_VIAL = registerItem("blood_vial",
             new Item(new FabricItemSettings()));
     public static final Item SOUL_TRANSPORT = registerItem("soul_transport",
@@ -34,7 +36,8 @@ public class Items {
                     -2.4F,
                     new FabricItemSettings()
             ));
-
+    public static final Item TAINTED_HORN = registerItem("tainted_horn",
+            new TaintedHorn(new FabricItemSettings()));
     private static net.minecraft.item.Item registerItem(String name, net.minecraft.item.Item item) {
         return Registry.register(Registries.ITEM, new Identifier(MOD_ID, name), item);
     }

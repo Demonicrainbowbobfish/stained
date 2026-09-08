@@ -1,9 +1,12 @@
 package io.sparkycreepster.client;
 
+import io.sparkycreepster.client.networking.particles.render.GhostMessageRenderer;
 import io.sparkycreepster.Stained;
 import io.sparkycreepster.client.endStopper.GoldenCubeRenderer;
 import io.sparkycreepster.client.endStopper.GoldenWorldBorderRenderer;
 import io.sparkycreepster.client.networking.particles.networked.ModClientPackets;
+import io.sparkycreepster.client.networking.particles.render.GhostMessageScreen;
+import io.sparkycreepster.custom.networking.packets.Packets;
 import io.sparkycreepster.custom.particles.CustomLodestoneParticles;
 import io.sparkycreepster.general.Items;
 import net.fabricmc.api.ClientModInitializer;
@@ -44,7 +47,13 @@ public class StainedClient implements ClientModInitializer {
 
 	@Override
 	public void onInitializeClient() {
-
+		GhostMessageRenderer.register();
+		ClientTickEvents.END_CLIENT_TICK.register(client -> {
+			GhostMessageRenderer.tick();
+		});
+		WorldRenderEvents.AFTER_TRANSLUCENT.register(context -> {
+			GhostMessageRenderer.render(context);
+		});
 		// =========================
 		// Golden cube animation
 		// =========================
@@ -136,6 +145,14 @@ public class StainedClient implements ClientModInitializer {
 
 					client.execute(() -> {
 						Stained.vanishEnabled = enabled;
+					});
+				}
+		);
+		ClientPlayNetworking.registerGlobalReceiver(
+				Packets.OPEN_GHOST_MESSAGE,
+				(client, handler, buf, responseSender) -> {
+					client.execute(() -> {
+						client.setScreen(new GhostMessageScreen());
 					});
 				}
 		);

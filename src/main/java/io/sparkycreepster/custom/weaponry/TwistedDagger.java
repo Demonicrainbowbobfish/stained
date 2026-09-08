@@ -7,6 +7,7 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.SwordItem;
 import net.minecraft.item.ToolMaterial;
+import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.TypedActionResult;
@@ -28,6 +29,16 @@ public class TwistedDagger extends SwordItem {
                     "BloodDisplayName",
                     user.getName().getString()
             );
+            user.playSound(
+                    SoundEvents.ENTITY_PUFFER_FISH_BLOW_OUT,
+                    1.0f,
+                    1.0f
+            );
+            user.playSound(
+                    SoundEvents.ITEM_BOTTLE_FILL,
+                    1.0f,
+                    1.0f
+            );
 
         }
 
@@ -42,6 +53,7 @@ public class TwistedDagger extends SwordItem {
             if (offhand.isOf(Items.BLOOD_VIAL)) {
                 offhand.getOrCreateNbt().putBoolean("Filled", true);
                 offhand.getOrCreateNbt().putBoolean("UsedOnNonPlayerEntity", true);
+
             }
         }
 

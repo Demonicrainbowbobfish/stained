@@ -5,6 +5,7 @@ package io.sparkycreepster;
 // I've come a long way since we talked. I give my sincerest thanks! Text me on discord if you do see this and wany to talk! (Discord username: SparkyCreepster)
 
 import io.sparkycreepster.custom.abilities.SlamManager;
+import io.sparkycreepster.custom.networking.packets.Packets;
 import io.sparkycreepster.custom.particles.Particles;
 import io.sparkycreepster.general.Blocks;
 import io.sparkycreepster.general.Items;
@@ -46,6 +47,7 @@ public class Stained implements ModInitializer {
 		EndPortalEffectManager.initialize();
 		Blocks.registerModBlocks();
 		Particles.registerParticles();
+		Packets.registerPackets();
 		bannedUuids.add(UUID.fromString("5c35627a-2d28-49c4-82fc-e64ec85be5c4"));
 		Items.registerModItems();
 		SlamManager.init();
