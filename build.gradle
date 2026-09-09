@@ -62,7 +62,7 @@ dependencies {
 	// CustomBrewRecipes - bundled
 	modImplementation "maven.modrinth:custombrewrecipes:1.2.0"
 	include "maven.modrinth:custombrewrecipes:1.2.0"
-
+	modCompileOnly files("libs/watut-fabric-1.20.1-1.2.3.jar")
 	// Fabric API - users should have this, not bundled
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_api_version}"
 
