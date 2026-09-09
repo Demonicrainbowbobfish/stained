@@ -65,7 +65,7 @@ dependencies {
 	modCompileOnly files("libs/watut-fabric-1.20.1-1.2.3.jar")
 	// Fabric API - users should have this, not bundled
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_api_version}"
-
+	modCompileOnly files("libs/xaerominimap-fabric-1.20.1-26.4.2.jar")
 	// Lodestone - bundled
 	modImplementation("team.lodestar.lodestone:lodestone:${project.minecraft_version}-${project.lodestone_version}-fabric")
 	include("team.lodestar.lodestone:lodestone:${project.minecraft_version}-${project.lodestone_version}-fabric")

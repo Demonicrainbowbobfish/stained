@@ -6,6 +6,7 @@
 		"EndPortalFrameMixin",
 		"WatutPlayerStatusManagerServerMixin"
 
+
 	],
 	"injectors": {
 		"defaultRequire": 1

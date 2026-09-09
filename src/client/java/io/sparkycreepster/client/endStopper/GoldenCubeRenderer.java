@@ -399,8 +399,8 @@ public class GoldenCubeRenderer {
                 maxY,
                 maxZ,
                 1.0f,
-                0.75f,
-                0.05f,
+                0.15f,
+                0.16f,
                 alpha
         );
     }

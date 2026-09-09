@@ -127,8 +127,8 @@ public class GoldenWorldBorderRenderer {
          * Bright gold.
          */
         float red = 1.0f;
-        float green = 0.85f;
-        float blue = 0.1f;
+        float green = 0.15f;
+        float blue = 0.16f;
 
         /*
          * Higher alpha = stronger/more visible forcefield.
