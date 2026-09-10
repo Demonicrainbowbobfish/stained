@@ -40,8 +40,8 @@ public class Ledger extends Item {
             }
         }
         else {
-            List<LedgerData.Entry> l = LedgerData.getEntries(stack);
-            user.sendMessage(Text.literal(l.toString()));
+            // Do the UI
+
         }
         return TypedActionResult.success(stack);
     }

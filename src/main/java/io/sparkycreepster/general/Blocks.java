@@ -15,7 +15,8 @@ public class Blocks {
 
     public static final Block BLOOD_OBSERVER = registerBlocks("blood_observer",
             new Block(FabricBlockSettings.copyOf(net.minecraft.block.Blocks.DEEPSLATE)));
-
+    public static final Block ALTAR = registerBlocks("altar",
+            new Block(FabricBlockSettings.copyOf(net.minecraft.block.Blocks.NETHERITE_BLOCK)));
     // register actual block, these are both helper methods btw
     private static Block registerBlocks(String name, Block block) {
         registerBlockItem(name, block);
