@@ -1,0 +1,17 @@
+{
+  "targets": [
+    "swap"
+  ],
+  "passes": [
+    {
+      "name": "stained:flipside",
+      "intarget": "minecraft:main",
+      "outtarget": "swap"
+    },
+    {
+      "name": "stained:flipside",
+      "intarget": "swap",
+      "outtarget": "minecraft:main"
+    }
+  ]
+}
