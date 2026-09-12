@@ -1,16 +1,23 @@
 package io.sparkycreepster.custom.blocks;
 
+
+import io.sparkycreepster.custom.blocks.blockEntities.AltarBlockEntity;
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockEntityProvider;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.ShapeContext;
+import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
 
-import javax.swing.text.html.BlockView;
 
-public class Altar extends Block {
-    public Altar(Settings settings) {
+public class Altar extends Block implements BlockEntityProvider {
+    @Override
+    public BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
+        return new AltarBlockEntity(pos, state);
+    }
+     public Altar(Settings settings) {
         super(settings);
     }
 
